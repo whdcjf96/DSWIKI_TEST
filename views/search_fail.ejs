@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DSU WIKI</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/stylesheets/search_fail_style.css" rel="stylesheet" type="text/css">   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <nav class="topMenu" >
+        <ul class = 'navbar'>
+                <li>
+                    <a class="logo" href="/">
+                        <img src="/images/logo.png" class='dsu' width = "120" height="60" align="center" />
+                    </a>
+                </li>
+        </ul>
+        <div class="input-form">
+                <form action ='/result' method="POST">
+                        <input type="search" name="text" placeholder="검색하시오"/>
+                            <button type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                </form>
+        </div>                              
+    </nav>
+</head>
+<body>
+<p class = 'textarea'><h2 style="text-align: center">"<%= text %>" 검색 결과</h2></p>
+<hr/>
+<p style =''>검색 결과를 찾을 수 없습니다.</p>
+<a class = 'add-text' href='/insert'>[새 문서 만들기]</a>
+</body>
+</html>
+
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DSU WIKI</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/stylesheets/insert_style.css" rel="stylesheet" type="text/css">   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <nav class="topMenu" >
+        <ul class = 'navbar'>
+                <li>
+                    <a class="logo" href="/">
+                        <img src="/images/logo.png" class='dsu' width = "120" height="60" align="center" />
+                    </a>
+                </li>
+        </ul>
+        <div class="input-form">
+                <form action ='/result' method="POST">
+                        <input type="search" name="text" placeholder="검색하시오" class = 'search'/>
+                            <button type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                </form>
+        </div>                              
+    </nav>
+</head>
+<body>
+    <div class = 'radios'>
+            <input type = 'radio' name='radio' id = 'humen' value= '1' checked='checked'>
+            <label for='humen'>사람</label>
+            <input type = 'radio' name='radio' id = 'study' value= '2'>
+            <label for='study'>강의</label>
+    </div>
+<div class = 'textbox'>   
+    <div class = 'text-humen'>
+        <p>소개</p>
+        <input type = 'text' id = 'text-humen1'/>
+        <p>장소</p>
+        <input type = 'text' id = 'text-humen2'/>
+        <p>꿀팁</p>
+        <input type = 'text' id = 'text-humen3'/>
+    </div>
+    <div class = 'text-study'>
+        <p>소개1</p>
+        <input type = 'text' id = 'text-study1'/>
+        <p>장소1</p>
+        <input type = 'text' id = 'text-study2'/>
+        <p>꿀팁1</p>
+        <input type = 'text' id = 'text-study3'/>
+    </div>
+</div>
+</body>
+<script>
+    $(document).ready(function(){
+        $('.textbox').hide();
+        if($('#humen').is(':checked')){
+            $('.text-humen').show();
+            $('.text-study').hide();
+        }else if($('#study').is(':checked')){
+            $('.text-humen').hide();
+            $('.text-study').show();
+        }
+    })
+</script>
+</html>
+
+
+
