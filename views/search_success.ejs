@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+   
+    </style>
+    <link href="/stylesheets/search_success_style.css" rel="stylesheet" type="text/css">   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#intro_form').hide()
+            $('#img_form').hide()
+            $('#talk_form').hide()
+           
+           $('#intro_edtbtn').on('click',function(){
+               $('#intro_form').show()
+               $('#intro_edtbtn').hide()
+           })
+           $('#img_edtbtn').on('click',function(){
+               $('#img_form').show()
+               $('#img_edtbtn').hide()
+           })
+           $('#talk_edtbtn').on('click',function(){
+               $('#talk_form').show()
+               $('#talk_edtbtn').hide()
+           })
+
+           
+           $('#intro_sub').on('click',function(){
+               $('#intro_edtbtn').show()
+               $('#intro_form').hide()
+           })
+           $('#img_sub').on('click',function(){
+               $('#img_edtbtn').show()
+               $('#img_form').hide()
+           })
+           $('#talk_sub').on('click',function(){
+               $('#talk_edtbtn').show()
+               $('#talk_form').hide()
+           })
+        })
+    </script>
+    
+</head>
+<body>
+ <nav class="topMenu" >
+        <ul class = 'navbar'>
+                <li>
+                    <a class="logo" href="/">
+                        <img src="/images/logo.png" class='dsu' width = "120" height="60" align="center" />
+                    </a>
+                </li>
+        </ul>
+        <div class="input-form">
+                <form action ='/result' method="POST">
+                        <input type="search" name="text" placeholder="검색하시오" class = 'search'/>
+                            <button type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                </form>
+        </div>                              
+    </nav>
+<!--<a href="#" onclick="doucument.getElementById('myForm_2').submit()" id="search_edt">편집완료</a>
+<a href="#" onclick="document.getElementById('myForm_3').submit();" id="intro_edt">편집</a>
+<a href="#" onclick="document.getElementById('myForm_4').submit();" id="img_edt">편집</a>
+<a href="#" onclick="document.getElementById('myForm_5').submit();" id="talk_edt">편집</a>-->
+
+
+
+
+    <h4>검색어</h4>
+    <hr align="left" width="30%">
+    <div id="text" class="b"><%= text %></div>
+    <br>
+    
+    
+    <h3>소개글</h3>
+    <hr align="left" width="30%">
+    
+    <div class="b" name="intro"><%= introduce %></div>
+   
+    <form action="/edit" method="POST" id="intro_form" name="intro_form">
+        <input type="text" name="intro_in" value = "<%= introduce %>" id="intro_in">
+        <input type="hidden" name="key" value="0">
+        <input type="hidden" name="text" value="<%= text%>">
+        <input type="submit" value="완료" id="intro_sub">
+    </form>
+    <button class="btn" id=intro_edtbtn>편집</button> 
+    <br>
+
+
+    <h3>인물사진</h3>
+    <hr align="left" width="30%">
+    <div class="b"><%= picture %></div>
+    <form action="/edit" method="POST" id="img_form" name="img_form">
+        <input type="text" name="img_in" value="<%= picture %>" id="img_in">
+        <input type="hidden" name="key" value="1">
+        <input type="hidden" name="text" value="<%= text%>">
+        <input type="submit" value="완료" id="img_sub">
+    </form>
+    <button class="btn" id=img_edtbtn>편집</button>
+    <br>
+
+    <h3><%= text %>에 대한 말.말.말</h3>
+    <hr align="left" width="30%">
+    
+    <div class="b"><%= talk %></div>
+    
+    <form action="/edit" method="POST" id="talk_form" name="talk_form">
+        <input type="text" name="talk_in" value="<%= talk %>" id="talk_in">
+        <input type="hidden" name="text" value="<%= text%>">   
+        <input type="hidden" name="key" value="2">
+        <input type="submit" value="완료" id="talk_sub">
+    </form>
+    <button class="btn" id=talk_edtbtn>편집</button>
+    <br>
+
+        
+</body>
+</html>

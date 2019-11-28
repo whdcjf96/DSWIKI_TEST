@@ -29,40 +29,52 @@
 </head>
 <body>
     <div class = 'radios'>
-            <input type = 'radio' name='radio' id = 'humen' value= '1' checked='checked'>
-            <label for='humen'>사람</label>
-            <input type = 'radio' name='radio' id = 'study' value= '2'>
+            <input type = 'radio' name='radio' id = 'human' >
+            <label for='human'>사람</label>
+            <input type = 'radio' name='radio' id = 'study' >
             <label for='study'>강의</label>
     </div>
-<div class = 'textbox'>   
-    <div class = 'text-humen'>
-        <p>소개</p>
-        <input type = 'text' id = 'text-humen1'/>
-        <p>장소</p>
-        <input type = 'text' id = 'text-humen2'/>
-        <p>꿀팁</p>
-        <input type = 'text' id = 'text-humen3'/>
+<form action="/insert_to_success" method="POST" >    
+<div class = 'textbox' >   
+    <div class = 'text-human' style="display: none">
+        <p><h3>소개글</h3></p>
+        <input type = 'text' name='intro_in' id = 'text-human1' value=""/>
+        <p><h3>인물사진</h3></p>
+        <input type = 'text' name='picture' id = 'text-human2' value=""/>
+        <p><h3><%= text %>에 대한 말.말.말</h3></p>
+        <input type = 'text' name='talk_in' id = 'text-human3' value=""/>
     </div>
-    <div class = 'text-study'>
-        <p>소개1</p>
-        <input type = 'text' id = 'text-study1'/>
-        <p>장소1</p>
-        <input type = 'text' id = 'text-study2'/>
-        <p>꿀팁1</p>
-        <input type = 'text' id = 'text-study3'/>
+    <div class = 'text-study' style="display: none">
+        <p><h3>소개글</h3></p>
+        <input type = 'text' name='intro_in' id = 'text-study1' value=""/>
+        <p><h3>장소</h3></p>
+        <input type = 'text' name='picture' id = 'text-study2' value=""/>
+        <p><h3><%= text %>에 대한 말.말.말</h3></p>
+        <input type = 'text' name='talk_in' id = 'text-study3' value=""/>
     </div>
+    <input type="submit" value='업로드'>
+    <input type='hidden' value="<%=text%>" name='text'>
 </div>
+</form>
 </body>
 <script>
     $(document).ready(function(){
-        $('.textbox').hide();
-        if($('#humen').is(':checked')){
-            $('.text-humen').show();
-            $('.text-study').hide();
-        }else if($('#study').is(':checked')){
-            $('.text-humen').hide();
-            $('.text-study').show();
-        }
+        $('#human').click(function(){
+            if($('#human').is(':checked')){
+                $('.text-human').show();
+                $('.text-study').hide();
+            }else{
+                $('.text-human').hide();
+            }   
+        })
+        $('#study').click(function(){
+            if($('#study').is(':checked')){
+                $('.text-study').show();
+                $('.text-human').hide();
+            }else{
+                $('.text-study').hide();
+            }   
+        })
     })
 </script>
 </html>
