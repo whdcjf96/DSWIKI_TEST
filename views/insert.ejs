@@ -28,53 +28,88 @@
     </nav>
 </head>
 <body>
-    <div class = 'radios'>
-            <input type = 'radio' name='radio' id = 'human' >
-            <label for='human'>사람</label>
-            <input type = 'radio' name='radio' id = 'study' >
-            <label for='study'>강의</label>
+    <div class="select">
+        <select name="select" id="select">
+            <option value="human">사람</option>
+            <option value="study">강의</option>
+            <option value="play">편의시설</option>
+            <option value="restaurant">식당</option>
+            <option value="circle">동아리</option>
+        </select>
     </div>
-<form action="/insert_to_success" method="POST" >    
+    
+<form action="/human_insert_to_success" method="POST" id="h_form">    
 <div class = 'textbox' >   
     <div class = 'text-human' style="display: none">
-        <p><h3>소개글</h3></p>
-        <input type = 'text' name='intro_in' id = 'text-human1' value=""/>
-        <p><h3>인물사진</h3></p>
-        <input type = 'text' name='picture' id = 'text-human2' value=""/>
+        <p><h3>소개</h3></p>
+        <input type = 'text' name='introduce' id = 'text-human1' value="1"/>
+        <p><h3>특징</h3></p>
+        <input type = 'text' name='character' id = 'text-human2' value="1"/>
         <p><h3><%= text %>에 대한 말.말.말</h3></p>
-        <input type = 'text' name='talk_in' id = 'text-human3' value=""/>
+        <input type = 'text' name='ssul' id = 'text-human3' value="1"/>
     </div>
+    <input type="submit" id="human_submit" value='업로드'>
+    <input type='hidden' value="<%=text%>" name='text'>
+</form>
+<form action="/study_insert_to_success" method="POST" id="s_form">   
     <div class = 'text-study' style="display: none">
-        <p><h3>소개글</h3></p>
-        <input type = 'text' name='intro_in' id = 'text-study1' value=""/>
-        <p><h3>장소</h3></p>
-        <input type = 'text' name='picture' id = 'text-study2' value=""/>
-        <p><h3><%= text %>에 대한 말.말.말</h3></p>
-        <input type = 'text' name='talk_in' id = 'text-study3' value=""/>
+        <p><h3>설명</h3></p>
+        <input type = 'text' name='explain_study' id = 'text-study1' value=""/>
+        <p><h3>참고사항</h3></p>
+        <input type = 'text' name='tip_study' id = 'text-study2' value=""/>   
     </div>
-    <input type="submit" value='업로드'>
+    <input type="submit" id="study_submit" value='업로드'>
+    <input type='hidden' value="<%=text%>" name='text'>
+</form>
+<form action="/play_insert_to_success" method="POST" id="p_form">   
+    <div class = 'text-play' style="display: none">
+        <p><h3>종류</h3></p>
+        <input type = 'text' name='sort' id = 'text-play1' value=""/>
+        <p><h3>설명</h3></p>
+        <input type = 'text' name='explain_play' id = 'text-play2' value=""/>
+        <p><h3>참고사항</h3></p>
+        <input type = 'text' name='tip_play' id = 'text-play3' value=""/>
+    </div>
+    <input type="submit" id="play_submit" value='업로드'>
+    <input type='hidden' value="<%=text%>" name='text'>
+</form>
+<form action="/restaurant_insert_to_success" method="POST" id="r_form">   
+    <div class = 'text-restaurant' style="display: none">
+        <p><h3>개요</h3></p>
+        <input type = 'text' name='overview_restaurant' id = 'text-restaurant1' value=""/>
+        <p><h3>메뉴</h3></p>
+        <input type = 'text' name='menu' id = 'text-restaurant2' value=""/>
+        <p><h3>참고사항</h3></p>
+        <input type = 'text' name='tip_restaurant' id = 'text-restaurant3' value=""/>
+    </div>
+    <input type="submit" id="restaurant_submit" value='업로드'>
+    <input type='hidden' value="<%=text%>" name='text'>
+</form>
+<form action="/circle_insert_to_success" method="POST" id="c_form">   
+    <div class = 'text-circle' style="display: none">
+        <p><h3>개요</h3></p>
+        <input type = 'text' name='overview_circle' id = 'text-circle1' value=""/>
+        <p><h3>활동내역</h3></p>
+        <input type = 'text' name='activity' id = 'text-circle2' value=""/>
+        <p><h3>평판</h3></p>
+        <input type = 'text' name='repute' id = 'text-circle3' value=""/>
+        <p><h3>참고사항</h3></p>
+        <input type = 'text' name='tip_circle' id = 'text-circle4' value=""/>
+        
+    </div>
+    <input type="submit" id="circle_submit" value='업로드'>
     <input type='hidden' value="<%=text%>" name='text'>
 </div>
 </form>
 </body>
 <script>
     $(document).ready(function(){
-        $('#human').click(function(){
-            if($('#human').is(':checked')){
-                $('.text-human').show();
-                $('.text-study').hide();
-            }else{
-                $('.text-human').hide();
-            }   
-        })
-        $('#study').click(function(){
-            if($('#study').is(':checked')){
-                $('.text-study').show();
-                $('.text-human').hide();
-            }else{
-                $('.text-study').hide();
-            }   
-        })
+        $('#h_form').hide();
+        $('#s_form').hide();
+        $('#p_form').hide();
+        $('#r_form').hide();
+        $('#c_form').hide();
+        
     })
 </script>
 </html>

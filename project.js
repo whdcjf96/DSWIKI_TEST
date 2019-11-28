@@ -38,10 +38,46 @@ app.all('/result',
 	});
 
 
-app.all('/insert_to_success', function(request,response){
-	
-	response.render('search_success',{'text':request.body.text, 'introduce':request.body.intro_in ,'picture':request.body.picture ,
-	'talk':request.body.talk_in});
+app.all('/study_insert_to_success', function(request,response){
+	search_database.push({text:request.body.text})
+	database.push({explain:request.body.explain_study})
+	database.push({explain:request.body.tip_study})
+	console.log(database)
+	response.render('study_success',{'text':request.body.text, 'explain':request.body.explain_study ,
+	'tip':request.body.tip_study});
+})
+app.all('/human_insert_to_success', function(request,response){
+	search_database.push({text:request.body.text})
+	database.push({introduce:request.body.introduce})
+	database.push({character:request.body.character})
+	database.push({ssul:request.body.ssul})
+	console.log(database)
+	response.render('human_success',{'text':request.body.text, 'introduce':request.body.introduce ,
+	'character':request.body.character, 'ssul': request.body.ssul});
+})
+app.all('/play_insert_to_success', function(request,response){
+	search_database.push({text:request.body.text})
+	database.push({explain:request.body.explain_study})
+	database.push({explain:request.body.tip_study})
+	console.log(database)
+	response.render('study_success',{'text':request.body.text, 'explain':request.body.explain_study ,
+	'tip':request.body.tip_study});
+})
+app.all('/restaurant_insert_to_success', function(request,response){
+	search_database.push({text:request.body.text})
+	database.push({explain:request.body.explain_study})
+	database.push({explain:request.body.tip_study})
+	console.log(database)
+	response.render('study_success',{'text':request.body.text, 'explain':request.body.explain_study ,
+	'tip':request.body.tip_study});
+})
+app.all('/circle_insert_to_success', function(request,response){
+	search_database.push({text:request.body.text})
+	database.push({explain:request.body.explain_study})
+	database.push({explain:request.body.tip_study})
+	console.log(database)
+	response.render('study_success',{'text':request.body.text, 'explain':request.body.explain_study ,
+	'tip':request.body.tip_study});
 })
 
 app.all('/edit',		//사진은 어떻게할지 정해야함
