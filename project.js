@@ -17,6 +17,10 @@ var play_database = {}
 var restaurant_database = {}
 var circle_database = {}
 var a= {}
+var b= {}
+var c= {}
+var d= {}
+var e={}
 var search_database = {}
 
 app.all('/',
@@ -40,20 +44,20 @@ app.all('/result',
 				'character': a[request.body.text][1], 'ssul': a[request.body.text][2]
 				}); break;
 			case 'study': response.render('study_success', {
-				'text': request.body.text, 'explain': request.body.explain_study,
-				'tip': request.body.tip_study
+				'text': request.body.text, 'explain': b[request.body.text][0],
+				'tip': b[request.body.text][1]
 			});break;
 			case 'play':response.render('play_success', {
-				'text': request.body.text, 'sort': request.body.sort, 'explain': request.body.explain_play,
-				'tip': request.body.tip_play
+				'text': request.body.text, 'sort': c[request.body.text][0], 'explain': c[request.body.text][1],
+				'tip': c[request.body.text][2]
 			}); break;
 			case 'restaurant': response.render('restaurant_success', {
-				'text': request.body.text, 'overview_restaurant': request.body.overview_restaurant, 'menu': request.body.menu,
-				'tip': request.body.tip_restaurant
+				'text': request.body.text, 'overview_restaurant': d[request.body.text][0], 'menu': d[request.body.text][1],
+				'tip': d[request.body.text][2]
 			});break;
 			case 'circle':response.render('circle_success', {
-				'text': request.body.text, 'overview_circle': request.body.overview_circle, 'activity': request.body.activity, 'repute': request.body.repute,
-				'tip': request.body.tip_circle
+				'text': request.body.text, 'overview_circle': e[request.body.text][0], 'activity': e[request.body.text][1], 'repute': e[request.body.text][2],
+				'tip': e[request.body.text][3]
 			});break;
 			default : response.render('search_fail', { 'text': request.body.text });
 		}
@@ -71,85 +75,89 @@ app.all('/result',
 		}
 		*/
 	});
-
+	app.all('/human_insert_to_success', function (request, response) { //3
+		search_database[request.body.text] = 'human' 
+		a[request.body.text] = [request.body.introduce, request.body.character, request.body.ssul]
+		console.log('this: '+a[request.body.text][0])
+	//	human_database['introduce'] = request.body.introduce
+//		human_database['character'] = request.body.character
+	//	human_database['ssul'] = request.body.ssul
+		console.log(human_database)
+		response.render('human_success', {
+			'text': request.body.text, 'introduce': a[request.body.text][0],
+			'character': a[request.body.text][1], 'ssul': a[request.body.text][2]
+		});
+	})
 
 app.all('/study_insert_to_success', function (request, response) {//2
 	search_database[request.body.text] = 'study'
-	study_database['explain'] = request.body.explain_study
-	study_database['tip'] = request.body.tip_study
+	b[request.body.text] = [request.body.explain_study,request.body.tip_study]
+//	study_database['explain'] = request.body.explain_study
+//	study_database['tip'] = request.body.tip_study
 	console.log(study_database)
 	response.render('study_success', {
-		'text': request.body.text, 'explain': request.body.explain_study,
-		'tip': request.body.tip_study
+		'text': request.body.text, 'explain': b[request.body.text][0],
+		'tip': b[request.body.text][1]
 	});
 })
-app.all('/human_insert_to_success', function (request, response) { //3
-	search_database[request.body.text] = 'human' 
-	var introduce = request.body.introduce
-	var character =request.body.character
-	var ssul = request.body.ssul
 
-	a[request.body.text] = [introduce, character, ssul]
-	console.log('this'+a[request.body.text][0])
-	human_database['introduce'] = request.body.introduce
-	human_database['character'] = request.body.character
-	human_database['ssul'] = request.body.ssul
-	console.log(human_database)
-	response.render('human_success', {
-		'text': request.body.text, 'introduce': request.body.introduce,
-		'character': request.body.character, 'ssul': request.body.ssul
-	});
-})
 app.all('/play_insert_to_success', function (request, response) { //3
 	search_database[request.body.text] = 'play'
-	
-	play_database['sort'] = request.body.sort
-	play_database['explain'] = request.body.explain_play
-	play_database['tip'] = request.body.tip_play
+	c[request.body.text] = [request.body.sort,request.body.explain_play,request.body.tip_play]
+//	play_database['sort'] = request.body.sort
+//	play_database['explain'] = request.body.explain_play
+//	play_database['tip'] = request.body.tip_play
 	console.log(play_database)
 	response.render('play_success', {
-		'text': request.body.text, 'sort': request.body.sort, 'explain': request.body.explain_play,
-		'tip': request.body.tip_play
+		'text': request.body.text, 'sort': c[request.body.text][0], 'explain': c[request.body.text][1],
+		'tip': c[request.body.text][2]
 	});
 })
 app.all('/restaurant_insert_to_success', function (request, response) { //3
 	search_database[request.body.text] = 'restaurant'
-	
-	
-	restaurant_database['overview_restaurant'] = request.body.overview_restaurant
-	restaurant_database['menu'] = request.body.menu
-	restaurant_database['tip'] = request.body.tip_restaurant
+	d[request.body.text] = [request.body.overview_restaurant,request.body.menu,request.body.tip_restaurant]
+	//restaurant_database['overview_restaurant'] = request.body.overview_restaurant
+	//restaurant_database['menu'] = request.body.menu
+	//restaurant_database['tip'] = request.body.tip_restaurant
 	console.log(restaurant_database)
 	response.render('restaurant_success', {
-		'text': request.body.text, 'overview_restaurant': request.body.overview_restaurant, 'menu': request.body.menu,
-		'tip': request.body.tip_restaurant
+		'text': request.body.text, 'overview_restaurant':d[request.body.text][0], 'menu': d[request.body.text][1],
+		'tip': d[request.body.text][2]
 	});
 })
 app.all('/circle_insert_to_success', function (request, response) { //4
 	search_database[request.body.text] = 'circle'
-	
-
-	circle_database['overview_circle'] = request.body.overview_circle
-	circle_database['activity'] = request.body.activity
-	circle_database['repute'] = request.body.repute
-	circle_database['tip'] = request.body.tip_circle
+	e[request.body.text] = [request.body.overview_circle,request.body.activity,request.body.repute,request.body.tip_circle]
+//	circle_database['overview_circle'] = request.body.overview_circle
+//	circle_database['activity'] = request.body.activity
+//	circle_database['repute'] = request.body.repute
+//	circle_database['tip'] = request.body.tip_circle
 	console.log(circle_database)
 	response.render('circle_success', {
-		'text': request.body.text, 'overview_circle': request.body.overview_circle, 'activity': request.body.activity, 'repute': request.body.repute,
-		'tip': request.body.tip_circle
+		'text': request.body.text, 'overview_circle': e[request.body.text][0], 'activity': e[request.body.text][1], 'repute': e[request.body.text][2],
+		'tip': e[request.body.text][3]
 	});
 })
+
+
+
+
+
+
+
 
 app.all('/human_edit',
 	function (request, response) {
 		var key = request.body.key;
 		switch (key) {
-			case '1': human_database.introduce = request.body.introduce_in; break;
-			case '2': human_database.character = request.body.character_in; break;
-			case '3': human_database.ssul = request.body.ssul_in; break;
+
+			case '1': a[request.body.text][0] = request.body.introduce_in; break;
+			case '2': a[request.body.text][1] = request.body.character_in; break;
+			case '3': a[request.body.text][2] = request.body.ssul_in; break;
+
 		}
 		console.log(human_database)
-		response.render('human_success', { 'text': request.body.text, 'introduce': human_database['introduce'], 'character': human_database['character'], 'ssul': human_database['ssul'] })
+		response.render('human_success', { 'text': request.body.text, 'introduce': a[request.body.text][0], 'character': a[request.body.text][1], 'ssul': a[request.body.text][2] })
 	})
 
 app.all('/study_edit',
@@ -208,9 +216,9 @@ app.all('/circle_edit',
 
 
 app.all('/insert',					//데이터베이스 삽입 부분
-	function (requset, response) {
-		console.log(requset.body.text)
-		response.render('insert', { 'text': requset.body.text })
+	function (request, response) {
+		console.log(request.body.text)
+		response.render('insert', { 'text': request.body.text })
 
 	});
 
