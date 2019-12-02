@@ -16,7 +16,7 @@ var study_database = {}
 var play_database = {}
 var restaurant_database = {}
 var circle_database = {}
-
+var a= {}
 var search_database = {}
 
 app.all('/',
@@ -36,8 +36,8 @@ app.all('/result',
 
 		switch(search_database[search]){
 			case 'human': response.render('human_success', {
-				'text': request.body.text, 'introduce': human_database.introduce,
-				'character': human_database.character, 'ssul': human_database.ssul
+				'text': request.body.text, 'introduce': a[request.body.text][0],
+				'character': a[request.body.text][1], 'ssul': a[request.body.text][2]
 				}); break;
 			case 'study': response.render('study_success', {
 				'text': request.body.text, 'explain': request.body.explain_study,
@@ -84,8 +84,13 @@ app.all('/study_insert_to_success', function (request, response) {//2
 	});
 })
 app.all('/human_insert_to_success', function (request, response) { //3
-	search_database[request.body.text] = 'human'
-	
+	search_database[request.body.text] = 'human' 
+	var introduce = request.body.introduce
+	var character =request.body.character
+	var ssul = request.body.ssul
+
+	a[request.body.text] = [introduce, character, ssul]
+	console.log('this'+a[request.body.text][0])
 	human_database['introduce'] = request.body.introduce
 	human_database['character'] = request.body.character
 	human_database['ssul'] = request.body.ssul
