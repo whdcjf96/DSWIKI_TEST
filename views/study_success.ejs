@@ -78,7 +78,7 @@
    
     <form action="/edit" method="POST" id="study_form" name="study_form">
         <input type="text" name="study_in" value = "<%= explain %>" id="study_in">
-        <input type="hidden" name="key" value="0">
+        <input type="hidden" name="key" value="1">
         <input type="hidden" name="text" value="<%= text%>">
         <input type="submit" value="완료" id="study_sub">
     </form>
@@ -91,13 +91,14 @@
     <div class="b"><%= tip %></div>
     <form action="/edit" method="POST" id="tip_form" name="tip_form">
         <input type="text" name="tip_in" value="<%= tip %>" id="tip_in">
-        <input type="hidden" name="key" value="1">
+        <input type="hidden" name="key" value="2">
         <input type="hidden" name="text" value="<%= text%>">
         <input type="submit" value="완료" id="tip_sub">
     </form>
     <button class="btn" id=tip_edtbtn>편집</button>
     <br>
 
+    
     
 
         

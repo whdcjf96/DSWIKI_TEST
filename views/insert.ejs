@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+    .btn{
+            float: right;
+            padding: 2%;
+            margin: 1%; 
+            border-radius: 1em;
+            background-color: #4641D9;
+            text-align: center;
+            color: white;
+            width: 100px;
+            height: 40px;
+            font-size: 1em;
+            font-weight: bold;
+            padding-bottom: 1pt;
+            padding-top: 1pt;
+            position: relative;
+            clear: left;
+            display: block;
+}</style>
+
 	<title>DSU WIKI</title>
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
@@ -27,6 +47,7 @@
         </div>                              
     </nav>
 </head>
+
 <body>
     <div class="select">
         <select name="select" id="select">
@@ -37,10 +58,10 @@
             <option value="circle">동아리</option>
         </select>
     </div>
-    
+
 <form action="/human_insert_to_success" method="POST" id="h_form">    
-<div class = 'textbox' >   
-    <div class = 'text-human' style="display: none">
+
+    <div class = 'text-human'>
         <p><h3>소개</h3></p>
         <input type = 'text' name='introduce' id = 'text-human1' value="1"/>
         <p><h3>특징</h3></p>
@@ -51,8 +72,9 @@
     <input type="submit" id="human_submit" value='업로드'>
     <input type='hidden' value="<%=text%>" name='text'>
 </form>
+
 <form action="/study_insert_to_success" method="POST" id="s_form">   
-    <div class = 'text-study' style="display: none">
+    <div class = 'text-study'>
         <p><h3>설명</h3></p>
         <input type = 'text' name='explain_study' id = 'text-study1' value=""/>
         <p><h3>참고사항</h3></p>
@@ -62,7 +84,7 @@
     <input type='hidden' value="<%=text%>" name='text'>
 </form>
 <form action="/play_insert_to_success" method="POST" id="p_form">   
-    <div class = 'text-play' style="display: none">
+    <div class = 'text-play'>
         <p><h3>종류</h3></p>
         <input type = 'text' name='sort' id = 'text-play1' value=""/>
         <p><h3>설명</h3></p>
@@ -74,7 +96,7 @@
     <input type='hidden' value="<%=text%>" name='text'>
 </form>
 <form action="/restaurant_insert_to_success" method="POST" id="r_form">   
-    <div class = 'text-restaurant' style="display: none">
+    <div class = 'text-restaurant'>
         <p><h3>개요</h3></p>
         <input type = 'text' name='overview_restaurant' id = 'text-restaurant1' value=""/>
         <p><h3>메뉴</h3></p>
@@ -86,7 +108,7 @@
     <input type='hidden' value="<%=text%>" name='text'>
 </form>
 <form action="/circle_insert_to_success" method="POST" id="c_form">   
-    <div class = 'text-circle' style="display: none">
+    <div class = 'text-circle'>
         <p><h3>개요</h3></p>
         <input type = 'text' name='overview_circle' id = 'text-circle1' value=""/>
         <p><h3>활동내역</h3></p>
@@ -99,17 +121,66 @@
     </div>
     <input type="submit" id="circle_submit" value='업로드'>
     <input type='hidden' value="<%=text%>" name='text'>
-</div>
+
 </form>
+<button class="btn" id="select_btn">선택</button>
 </body>
 <script>
     $(document).ready(function(){
+        
+
         $('#h_form').hide();
         $('#s_form').hide();
         $('#p_form').hide();
         $('#r_form').hide();
         $('#c_form').hide();
         
+        
+
+        $('#select_btn').on('click',function(){
+            
+            alert($('#select option:selected').val())
+
+            if($('#select option:selected').val()=='human'){
+                    $('#h_form').show();
+                    $('#s_form').hide();
+                    $('#p_form').hide();
+                    $('#r_form').hide();
+                    $('#c_form').hide();
+            }
+            else if($('#select option:selected').val()=='study'){
+                    $('#h_form').hide();
+                    $('#s_form').show();
+                    $('#p_form').hide();
+                    $('#r_form').hide();
+                    $('#c_form').hide();
+            }
+            else if($('#select option:selected').val()=='play'){
+                    $('#h_form').hide();
+                    $('#s_form').hide();
+                    $('#p_form').show();
+                    $('#r_form').hide();
+                    $('#c_form').hide();
+            }
+            else if($('#select option:selected').val()=='restaurant'){
+                    $('#h_form').hide();
+                    $('#s_form').hide();
+                    $('#p_form').hide();
+                    $('#r_form').show();
+                    $('#c_form').hide();
+            }
+            else if($('#select option:selected').val()=='circle'){
+                    $('#h_form').hide();
+                    $('#s_form').hide();
+                    $('#p_form').hide();
+                    $('#r_form').hide();
+                    $('#c_form').show();
+            }
+
+        })
+
+  
+    
     })
 </script>
 </html>

@@ -11,13 +11,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-            $('#intro_form').hide()
+            $('#introduce_form').hide()
             $('#character_form').hide()
             $('#ssul_form').hide()
            
-           $('#intro_edtbtn').on('click',function(){
-               $('#intro_form').show()
-               $('#intro_edtbtn').hide()
+           $('#introduce_edtbtn').on('click',function(){
+               $('#introduce_form').show()
+               $('#introduce_edtbtn').hide()
            })
            $('#character_edtbtn').on('click',function(){
                $('#character_form').show()
@@ -29,9 +29,9 @@
            })
 
            
-           $('#intro_sub').on('click',function(){
-               $('#intro_edtbtn').show()
-               $('#intro_form').hide()
+           $('#introduce_sub').on('click',function(){
+               $('#introduce_edtbtn').show()
+               $('#introduce_form').hide()
            })
            $('#character_sub').on('click',function(){
                $('#character_edtbtn').show()
@@ -80,24 +80,24 @@
     <h3>소개</h3>
     <hr align="left" width="30%">
     
-    <div class="b" name="intro"><%= introduce %></div>
+    <div class="b" name="introduce"><%= introduce %></div>
    
-    <form action="/edit" method="POST" id="intro_form" name="intro_form">
-        <input type="text" name="intro_in" value = "<%= introduce %>" id="intro_in">
-        <input type="hidden" name="key" value="0">
+    <form action="/human_edit" method="POST" id="introduce_form" name="introduce_form">
+        <input type="text" name="introduce_in" value = "<%= introduce %>" id="introduce_in">
+        <input type="hidden" name="key" value="1">
         <input type="hidden" name="text" value="<%= text%>">
         <input type="submit" value="완료" id="intro_sub">
     </form>
-    <button class="btn" id=intro_edtbtn>편집</button> 
+    <button class="btn" id=introduce_edtbtn>편집</button> 
     <br>
 
 
     <h3>특징</h3>
     <hr align="left" width="30%">
     <div class="b"><%= character %></div>
-    <form action="/edit" method="POST" id="character_form" name="character_form">
+    <form action="/human_edit" method="POST" id="character_form" name="character_form">
         <input type="text" name="character_in" value="<%= character %>" id="character_in">
-        <input type="hidden" name="key" value="1">
+        <input type="hidden" name="key" value="2">
         <input type="hidden" name="text" value="<%= text%>">
         <input type="submit" value="완료" id="character_sub">
     </form>
@@ -109,10 +109,10 @@
     
     <div class="b"><%= ssul %></div>
     
-    <form action="/edit" method="POST" id="ssul_form" name="ssul_form">
+    <form action="/human_edit" method="POST" id="ssul_form" name="ssul_form">
         <input type="text" name="ssul_in" value="<%= ssul %>" id="ssul_in">
         <input type="hidden" name="text" value="<%= text %>">   
-        <input type="hidden" name="key" value="2">
+        <input type="hidden" name="key" value="3">
         <input type="submit" value="완료" id="talk_sub">
     </form>
     <button class="btn" id=ssul_edtbtn>편집</button>

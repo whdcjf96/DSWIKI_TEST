@@ -89,11 +89,11 @@
     <h3>개요</h3>
     <hr align="left" width="30%">
     
-    <div class="b" name="overview"><%= overview %></div>
+    <div class="b" name="overview_circle"><%= overview_circle %></div>
    
     <form action="/edit" method="POST" id="overview_form" name="overview_form">
-        <input type="text" name="overview_in" value = "<%= overview %>" id="overview_in">
-        <input type="hidden" name="key" value="0">
+        <input type="text" name="overview_in" value = "<%= overview_circle %>" id="overview_in">
+        <input type="hidden" name="key" value="1">
         <input type="hidden" name="text" value="<%= text%>">
         <input type="submit" value="완료" id="overview_sub">
     </form>
@@ -106,7 +106,7 @@
     <div class="b"><%= activity %></div>
     <form action="/edit" method="POST" id="activity_form" name="activity_form">
         <input type="text" name="activity_in" value="<%= activity %>" id="activity_in">
-        <input type="hidden" name="key" value="1">
+        <input type="hidden" name="key" value="2">
         <input type="hidden" name="text" value="<%= text%>">
         <input type="submit" value="완료" id="activity_sub">
     </form>
@@ -118,7 +118,7 @@
     <div class="b"><%= repute %></div>
     <form action="/edit" method="POST" id="repute_form" name="repute_form">
         <input type="text" name="repute_in" value="<%= repute %>" id="repute_in">
-        <input type="hidden" name="key" value="1">
+        <input type="hidden" name="key" value="3">
         <input type="hidden" name="text" value="<%= text%>">
         <input type="submit" value="완료" id="repute_sub">
     </form>
@@ -133,7 +133,7 @@
     <form action="/edit" method="POST" id="tip_form" name="tip_form">
         <input type="text" name="tip_in" value="<%= tip %>" id="tip_in">
         <input type="hidden" name="text" value="<%= text %>">   
-        <input type="hidden" name="key" value="2">
+        <input type="hidden" name="key" value="4">
         <input type="submit" value="완료" id="tip_sub">
     </form>
     <button class="btn" id=tip_edtbtn>편집</button>

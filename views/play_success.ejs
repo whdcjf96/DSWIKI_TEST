@@ -84,7 +84,7 @@
    
     <form action="/edit" method="POST" id="sort_form" name="sort_form">
         <input type="text" name="sort_in" value = "<%= sort %>" id="sort_in">
-        <input type="hidden" name="key" value="0">
+        <input type="hidden" name="key" value="1">
         <input type="hidden" name="text" value="<%= text%>">
         <input type="submit" value="완료" id="sort_sub">
     </form>
@@ -97,7 +97,7 @@
     <div class="b"><%= explain %></div>
     <form action="/edit" method="POST" id="play_form" name="play_form">
         <input type="text" name="play_in" value="<%= explain %>" id="play_in">
-        <input type="hidden" name="key" value="1">
+        <input type="hidden" name="key" value="2">
         <input type="hidden" name="text" value="<%= text%>">
         <input type="submit" value="완료" id="play_sub">
     </form>
@@ -112,7 +112,7 @@
     <form action="/edit" method="POST" id="tip_form" name="tip_form">
         <input type="text" name="tip_in" value="<%= tip %>" id="tip_in">
         <input type="hidden" name="text" value="<%= text %>">   
-        <input type="hidden" name="key" value="2">
+        <input type="hidden" name="key" value="3">
         <input type="submit" value="완료" id="tip_sub">
     </form>
     <button class="btn" id=tip_edtbtn>편집</button>
