@@ -144,21 +144,9 @@ app.all('/result',
 			}
 			
 		})
-		/*	if (search in search_database) {
-				response.render('human_success', {
-					'text': request.body.text, 'introduce': human_database.introduce,
-					'character': human_database.character, 'ssul': human_database.ssul
-					
-				});
-			} else {														//데이터베이스 연동 값 가져오는 부분
-				response.render('search_fail', { 'text': request.body.text });
-			}
-			*/
+	
 	});
-app.all('/human_insert_to_success', function (request, response) { //3
-	//search_database[request.body.text] = 'human'
-	//a[request.body.text] = [request.body.introduce, request.body.character, request.body.ssul]
-	//console.log('this: '+a[request.body.text][0])
+app.all('/human_insert_to_success', function (request, response) { 
 
 	db.query("INSERT INTO humans (name,introduce,charact,ssul) VALUES (?,?,?,?)", [request.body.text, request.body.introduce, request.body.character, request.body.ssul], function (err, results, fields) {
 		if (err) throw err;
@@ -168,15 +156,7 @@ app.all('/human_insert_to_success', function (request, response) { //3
 		if (err) throw err;
 		console.log("검색어 테이블에 human 들어감")
 	})
-
-	//	human_database['introduce'] = request.body.introduce
-	//		human_database['character'] = request.body.character
-	//	human_database['ssul'] = request.body.ssul
-	//console.log(human_database)
-	//var receive_h =[];
-	//var a = request.body.text;
-	db.query(`SELECT * FROM humans WHERE name='${request.body.text}'`, function (err, results, fields) {
-		//receive_h = results.json;
+db.query(`SELECT * FROM humans WHERE name='${request.body.text}'`, function (err, results, fields) {
 		if (err) throw err;
 		console.log(results[0].name)
 		console.log(results[0].introduce)
@@ -189,9 +169,6 @@ app.all('/human_insert_to_success', function (request, response) { //3
 })
 
 app.all('/study_insert_to_success', function (request, response) {//2
-	//search_database[request.body.text] = 'study'
-	//b[request.body.text] = [request.body.explain_study, request.body.tip_study]
-
 	db.query("INSERT INTO searchs (name,table_name) VALUES (?,?)", [request.body.text, 'studys'], function (err, results) {
 		if (err) throw err;
 		console.log("검색어 테이블에 studys 들어감")
@@ -200,10 +177,8 @@ app.all('/study_insert_to_success', function (request, response) {//2
 		if (err) throw err;
 	})
 
-	//	study_database['explain'] = request.body.explain_study
-	//	study_database['tip'] = request.body.tip_study
-
-	db.query(`SELECT * FROM studys WHERE name='${request.body.text}'`, function (err, results, fields) {		//receive_h = results.json;
+	
+	db.query(`SELECT * FROM studys WHERE name='${request.body.text}'`, function (err, results, fields) {		
 		if (err) throw err;
 		console.log(results[0].name)
 		console.log(results[0].explaination)
@@ -216,8 +191,6 @@ app.all('/study_insert_to_success', function (request, response) {//2
 })
 
 app.all('/play_insert_to_success', function (request, response) { //3
-	//search_database[request.body.text] = 'play'
-	//c[request.body.text] = [request.body.sort, request.body.explain_play, request.body.tip_play]
 
 	db.query("INSERT INTO searchs (name,table_name) VALUES (?,?)", [request.body.text, 'plays'], function (err, results) {
 		if (err) throw err;
@@ -226,10 +199,6 @@ app.all('/play_insert_to_success', function (request, response) { //3
 	db.query("INSERT INTO plays (name,sort,explaination,tip) VALUES (?,?,?,?)", [request.body.text, request.body.sort, request.body.explain_play, request.body.tip_play], function (err, results, fields) {
 		if (err) throw err;
 	})
-	//	play_database['sort'] = request.body.sort
-	//	play_database['explain'] = request.body.explain_play
-	//	play_database['tip'] = request.body.tip_play
-	//console.log(play_database)
 	db.query(`SELECT * FROM plays WHERE name = '${request.body.text}'`, function (err, results, fields) {
 		if (err) throw err;
 		console.log(results[0].name)
@@ -244,9 +213,7 @@ app.all('/play_insert_to_success', function (request, response) { //3
 
 
 })
-app.all('/restaurant_insert_to_success', function (request, response) { //3
-	//search_database[request.body.text] = 'restaurant'
-	//d[request.body.text] = [request.body.overview_restaurant, request.body.menu, request.body.tip_restaurant]
+app.all('/restaurant_insert_to_success', function (request, response) {
 
 	db.query("INSERT INTO searchs (name,table_name) VALUES (?,?)", [request.body.text, 'restaurants'], function (err, results) {
 		if (err) throw err;
@@ -256,11 +223,6 @@ app.all('/restaurant_insert_to_success', function (request, response) { //3
 		if (err) throw err;
 	})
 
-	//restaurant_database['overview_restaurant'] = request.body.overview_restaurant
-	//restaurant_database['menu'] = request.body.menu
-	//restaurant_database['tip'] = request.body.tip_restaurant
-	//console.log(restaurant_database)
-
 	db.query(`SELECT * FROM restaurants WHERE name = '${request.body.text}'`, function (err, results, fields) {
 		if (err) throw err;
 		response.render('restaurant_success', {
@@ -269,10 +231,7 @@ app.all('/restaurant_insert_to_success', function (request, response) { //3
 		})
 	})
 })
-app.all('/circle_insert_to_success', function (request, response) { //4
-	//search_database[request.body.text] = 'circle'
-	//e[request.body.text] = [request.body.overview_circle, request.body.activity, request.body.repute, request.body.tip_circle]
-
+app.all('/circle_insert_to_success', function (request, response) { 
 	db.query("INSERT INTO searchs (name,table_name) VALUES (?,?)", [request.body.text, 'circles'], function (err, results) {
 		if (err) throw err;
 		console.log("검색어 테이블에 circles 들어감")
@@ -280,12 +239,6 @@ app.all('/circle_insert_to_success', function (request, response) { //4
 	db.query("INSERT INTO circles (name,overview,activity,repute,tip) VALUES (?,?,?,?,?)", [request.body.text, request.body.overview_circle, request.body.activity, request.body.repute, request.body.tip_circle], function (err, results, fields) {
 		if (err) throw err;
 	})
-
-	//	circle_database['overview_circle'] = request.body.overview_circle
-	//	circle_database['activity'] = request.body.activity
-	//	circle_database['repute'] = request.body.repute
-	//	circle_database['tip'] = request.body.tip_circle
-	//console.log(circle_database)
 
 	db.query(`SELECT * FROM circles WHERE name = '${request.body.text}'`, function (err, results, fields) {
 		if (err) throw err;
@@ -384,13 +337,10 @@ app.all('/circle_edit',
 		
 	})
 
-
-
-app.all('/insert',					//데이터베이스 삽입 부분
+app.all('/insert',					
 	function (request, response) {
 		console.log(request.body.text)
 		response.render('insert', { 'text': request.body.text })
-
 	});
 
 app.listen(3000, function () {
