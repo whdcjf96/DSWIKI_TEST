@@ -118,11 +118,9 @@
         <input type = 'text' name='repute' id = 'text-circle3' />
         <p><h3>참고사항</h3></p>
         <input type = 'text' name='tip_circle' id = 'text-circle4' />
-        
     </div>
     <input type="submit" id="circle_submit" value='업로드'>
     <input type='hidden' value="<%=text%>" name='text'>
-
 </form>
 <button class="btn" id="select_btn">선택</button>
 </body>
@@ -140,7 +138,7 @@
 
         $('#select_btn').on('click',function(){
             
-            alert($('#select option:selected').val())
+           
 
             if($('#select option:selected').val()=='human'){
                     $('#h_form').show();

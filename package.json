@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "project.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -12,6 +12,7 @@
     "express": "^4.16.4",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
+    "mysql": "^2.17.1",
     "mysql2": "^2.0.1",
     "sequelize": "^5.21.2"
   }
